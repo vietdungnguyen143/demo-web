@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Kiểm tra Lệnh SX</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f4f6f9;
+      padding: 20px;
+    }
+    .header {
+      background-color: #003366;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 20px;
+      border-bottom: 4px solid #00aaff;
+      margin-bottom: 30px;
+    }
+    .btn-link {
+      color: #003366;
+      font-weight: 500;
+    }
+    .btn-link:hover {
+      color: #007bff;
+      text-decoration: underline;
+    }
+    .status-pending {
+      background-color: #ffc107;
+      color: #212529;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+    .status-progress {
+      background-color: #0dcaf0;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+    .status-done {
+      background-color: #198754;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+    .card-style {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+    table th, table td {
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    KIỂM TRA LỆNH SẢN XUẤT
+  </div>
+
+  <a href="main.html" class="btn btn-link mb-3">&larr; Quay lại</a>
+
+  <div class="card-style">
+    <h4 class="mb-4 text-primary fw-bold">Danh sách Lệnh Sản Xuất</h4>
+
+    <table class="table table-bordered table-hover">
+      <thead class="table-light">
+        <tr>
+          <th>#</th>
+          <th>Mã Lệnh</th>
+          <th>Sản phẩm</th>
+          <th>SL yêu cầu</th>
+          <th>Ngày bắt đầu</th>
+          <th>Trạng thái</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>SX001</td>
+          <td>Máy lọc nước A</td>
+          <td>100</td>
+          <td>2025-04-01</td>
+          <td><span class="status-pending">Đang chờ</span></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>SX002</td>
+          <td>Máy lọc nước B</td>
+          <td>150</td>
+          <td>2025-04-05</td>
+          <td><span class="status-progress">Đang sản xuất</span></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>SX003</td>
+          <td>OEM Model C</td>
+          <td>80</td>
+          <td>2025-03-28</td>
+          <td><span class="status-done">Hoàn thành</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="mt-4">
+      <h5 class="fw-bold text-secondary">Ghi chú:</h5>
+      <ul>
+        <li><span class="status-pending">Đang chờ</span>: Chưa bắt đầu sản xuất</li>
+        <li><span class="status-progress">Đang sản xuất</span>: Đã bắt đầu sản xuất</li>
+        <li><span class="status-done">Hoàn thành</span>: Đã hoàn tất và nhập kho</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

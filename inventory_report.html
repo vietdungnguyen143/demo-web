@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Báo cáo tồn kho</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f4f6f9;
+      padding: 20px;
+    }
+    .header {
+      background-color: #003366;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 20px;
+      border-bottom: 4px solid #00aaff;
+      margin-bottom: 30px;
+    }
+    .btn-link {
+      color: #003366;
+      font-weight: 500;
+    }
+    .btn-link:hover {
+      color: #007bff;
+      text-decoration: underline;
+    }
+    .status-pending {
+      background-color: #ffc107;
+      color: #212529;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+    .status-progress {
+      background-color: #0dcaf0;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+    .status-done {
+      background-color: #198754;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+    .card-style {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+    table th, table td {
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-4">
+    <a href="main.html" class="btn btn-link">&larr; Quay lại</a>
+    <h2 class="header">Báo cáo tồn kho</h2>
+
+    <div class="row">
+      <div class="col-md-6">
+        <canvas id="stockPieChart"></canvas>
+      </div>
+      <div class="col-md-6">
+        <canvas id="stockBarChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const pieCtx = document.getElementById('stockPieChart').getContext('2d');
+    new Chart(pieCtx, {
+      type: 'pie',
+      data: {
+        labels: ['Linh kiện', 'BTP', 'TP', 'OEM'],
+        datasets: [{
+          label: 'Tỷ lệ tồn kho',
+          data: [300, 150, 200, 100],
+          backgroundColor: [
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(255, 206, 86, 0.7)',
+            'rgba(75, 192, 192, 0.7)',
+            'rgba(255, 99, 132, 0.7)'
+          ]
+        }]
+      }
+    });
+
+    const barCtx = document.getElementById('stockBarChart').getContext('2d');
+    new Chart(barCtx, {
+      type: 'bar',
+      data: {
+        labels: ['LK01', 'LK02', 'TP01', 'OEM01'],
+        datasets: [{
+          label: 'Số lượng tồn kho',
+          data: [50, 75, 40, 30],
+          backgroundColor: 'rgba(153, 102, 255, 0.7)'
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

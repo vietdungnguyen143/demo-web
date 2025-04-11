@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <a href="main.html" class="btn btn-link mb-3">&larr; Quay lại</a>
+  <title>Phiếu Thu/Chi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body {
+        background-color: #ffffff;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    .form-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .bordered {
+      border: 1px solid #000;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+    h4 {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .print-btn {
+      text-align: right;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-4 form-container">
+    <div class="print-btn">
+      <button class="btn btn-primary" onclick="exportToPDF('phieuThu')">Xuất PDF Phiếu Thu</button>
+      <button class="btn btn-primary" onclick="exportToPDF('phieuChi')">Xuất PDF Phiếu Chi</button>
+    </div>
+
+    <div id="phieuThu" class="bordered">
+      <h4>Phiếu Thu (Mẫu số 01 - TT)</h4>
+      <p><strong>Ban hành theo Thông tư số 133/2016/TT-BTC Ngày 26/08/2016</strong></p>
+      <p><strong>Họ và tên người nộp tiền:</strong> ..................................................</p>
+      <p><strong>Địa chỉ:</strong> ...................................................................................</p>
+      <p><strong>Lý do thu:</strong> .....................................................................................</p>
+      <p><strong>Số tiền:</strong> ............................. (Viết bằng chữ): .....................................................</p>
+      <p><strong>Kèm theo:</strong> .....................................................................................</p>
+      <p><strong>Người lập phiếu</strong> .................. <strong>Thủ quỹ</strong> .................. <strong>Kế toán trưởng</strong> ...........</p>
+    </div>
+
+    <div id="phieuChi" class="bordered">
+      <h4>Phiếu Chi (Mẫu số 02 - TT)</h4>
+      <p><strong>Ban hành theo Thông tư số 133/2016/TT-BTC Ngày 26/08/2016</strong></p>
+      <p><strong>Họ và tên người nhận tiền:</strong> ..................................................</p>
+      <p><strong>Địa chỉ:</strong> ...................................................................................</p>
+      <p><strong>Lý do chi:</strong> .....................................................................................</p>
+      <p><strong>Số tiền:</strong> ............................. (Viết bằng chữ): .....................................................</p>
+      <p><strong>Kèm theo:</strong> .....................................................................................</p>
+      <p><strong>Người lập phiếu</strong> .................. <strong>Người nhận tiền</strong> .................. <strong>Kế toán trưởng</strong> ...........</p>
+    </div>
+  </div>
+
+  <script>
+    function exportToPDF(id) {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      const elementHTML = document.getElementById(id);
+
+      doc.html(elementHTML, {
+        callback: function (doc) {
+          doc.save(id + ".pdf");
+        },
+        x: 10,
+        y: 10,
+        width: 180
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Xuất / Nhập kho</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f4f6f9;
+      padding: 20px;
+    }
+    .header {
+      background-color: #003366;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 20px;
+      border-bottom: 4px solid #00aaff;
+      margin-bottom: 30px;
+    }
+    .btn-link {
+      color: #003366;
+      font-weight: 500;
+    }
+    .btn-link:hover {
+      color: #007bff;
+      text-decoration: underline;
+    }
+    .status-pending {
+      background-color: #ffc107;
+      color: #212529;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+    .status-progress {
+      background-color: #0dcaf0;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+    .status-done {
+      background-color: #198754;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+    .card-style {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+    table th, table td {
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="p-4">
+
+  <a href="main.html" class="btn btn-link mb-3">&larr; Quay lại</a>
+  <h3 class="header">Quản lý Xuất / Nhập kho</h3>
+
+  <ul class="nav nav-tabs" id="warehouseTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="export-tab" data-bs-toggle="tab" data-bs-target="#export" type="button" role="tab">Xuất kho</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="import-tab" data-bs-toggle="tab" data-bs-target="#import" type="button" role="tab">Nhập kho</button>
+    </li>
+  </ul>
+
+  <div class="tab-content mt-3" id="warehouseTabContent">
+    <!-- Export Section -->
+    <div class="tab-pane fade show active" id="export" role="tabpanel">
+      <button class="btn btn-sm btn-primary mb-2" onclick="exportTableToExcel('export-table', 'xuat_kho')">📥 Export Excel</button>
+      <table class="table table-bordered" id="export-table">
+        <thead class="table-light">
+          <tr>
+            <th>Ngày</th>
+            <th>Tên hàng</th>
+            <th>Mã hàng</th>
+            <th>Số lượng</th>
+            <th>Người xuất</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>2025-04-01</td><td>Linh kiện A</td><td>LK001</td><td>50</td><td>Nguyễn Văn A</td></tr>
+          <tr><td>2025-04-02</td><td>Linh kiện B</td><td>LK002</td><td>30</td><td>Trần Thị B</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Import Section -->
+    <div class="tab-pane fade" id="import" role="tabpanel">
+      <button class="btn btn-sm btn-primary mb-2" onclick="exportTableToExcel('import-table', 'nhap_kho')">📥 Export Excel</button>
+      <table class="table table-bordered" id="import-table">
+        <thead class="table-light">
+          <tr>
+            <th>Ngày</th>
+            <th>Tên hàng</th>
+            <th>Mã hàng</th>
+            <th>Số lượng</th>
+            <th>Người nhập</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>2025-04-03</td><td>Linh kiện C</td><td>LK003</td><td>100</td><td>Phạm Văn C</td></tr>
+          <tr><td>2025-04-04</td><td>Linh kiện D</td><td>LK004</td><td>75</td><td>Lê Thị D</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Export to CSV Script -->
+  <script>
+    function exportTableToExcel(tableId, filename) {
+      const table = document.getElementById(tableId);
+      const wb = XLSX.utils.book_new();
+      const ws = XLSX.utils.table_to_sheet(table);
+      XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+      XLSX.writeFile(wb, filename + ".xlsx");
+    }
+  </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
